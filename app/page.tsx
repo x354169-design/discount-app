@@ -81,7 +81,7 @@ export default function DiscountApp() {
     }
   };
 
-  const goToNextStep = (setter, value) => {
+    const goToNextStep = (setter: any, value: any) => {
     setter(value);
     setStep((prev) => prev + 1);
   };
