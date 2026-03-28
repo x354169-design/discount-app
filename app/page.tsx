@@ -17,7 +17,7 @@ const discounts = ['10% OFF', '20% OFF', '30% OFF', '半額！！！'];
 
 export default function DiscountApp() {
   const [activeTab, setActiveTab] = useState('feed');
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<any[]>([]);
   const [likedPostIds, setLikedPostIds] = useState([]);
 
   const [step, setStep] = useState(1);
