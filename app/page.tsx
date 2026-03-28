@@ -99,7 +99,8 @@ export default function DiscountApp() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif', maxWidth: '500px', margin: '0 auto', minHeight: '100vh', backgroundColor: '#000000', color: '#ffffff' }}>
-      <h1 style={titleStyle}>🛒 見切り品ハンター</h1>
+     // 直接 style の中に any をぶち込む！
+  <h1 style={titleStyle as any}>🛒 見切り品ハンター</h1>
 
       <div style={{ display: 'flex', marginBottom: '20px', borderBottom: '1px solid #444' }}>
         <button onClick={() => setActiveTab('feed')} style={{ flex: 1, padding: '10px', fontWeight: 'bold', color: activeTab === 'feed' ? '#ff4757' : '#ffffff', borderBottom: activeTab === 'feed' ? '3px solid #ff4757' : 'none', backgroundColor: 'transparent', borderTop: 'none', borderLeft: 'none', borderRight: 'none', cursor: 'pointer' }}>📱 みんなの投稿</button>
@@ -147,7 +148,7 @@ export default function DiscountApp() {
           {step === 1 && (
             <div>
               <h2 style={h2Style}>どこで見つけた？（地図を動かしてな！）</h2>
-              <MapComponent onLocationSelect={(coords) => setSelectedCoords(coords)} />
+             <MapComponent onLocationSelect={(coords: any) => setSelectedCoords(coords)} />
               <button style={{...buttonStyle, backgroundColor: '#ff4757', color: 'white', WebkitTextFillColor: 'white', textAlign: 'center'}} onClick={() => goToNextStep(setSelectedStation, '地図で選んだ場所')}>📍 ここで決定！</button>
             </div>
           )}
@@ -156,7 +157,7 @@ export default function DiscountApp() {
             <div>
               <h2 style={h2Style}>お店の名前は？</h2>
               {['まいばすけっと', 'ダイエー', 'オオゼキ', 'その他'].map((store) => (
-                <button key={store} style={buttonStyle} onClick={() => goToNextStep(setSelectedStore, store)}>🏪 {store}</button>
+                <button key={store} style={buttonStyle as any} onClick={() => goToNextStep(setSelectedStore, store)}>🏪 {store}</button>
               ))}
             </div>
           )}
@@ -176,14 +177,23 @@ export default function DiscountApp() {
           )}
 
           {step === 4 && (
-            <div>
-              <h2 style={h2Style}>どのくらい安い？ ({selectedCategory})</h2>
-              {discounts.map((discount) => (
-                <button key={discount} style={{...buttonStyle}} onClick={() => goToNextStep(setSelectedDiscount, discount)}>
-                  <span style={{color: discount.includes('半額') ? '#ff4757' : '#333333', fontWeight: discount.includes('半額') ? 'bold' : 'normal'}}>🏷️ {discount}</span>
-                </button>
-              ))}
-            </div>
+           <div>
+  <h2 style={h2Style as any}>どのくらい安い？ ({selectedCategory})</h2>
+  {discounts.map((discount) => (
+    <button 
+      key={discount} 
+      style={{...buttonStyle} as any} 
+      onClick={() => goToNextStep(setSelectedDiscount, discount)}
+    >
+      <span style={{
+        color: discount.includes('半額') ? '#ff4757' : '#333333', 
+        fontWeight: discount.includes('半額') ? 'bold' : 'normal'
+      }}>
+        🏷️ {discount}
+      </span>
+    </button>
+  ))}
+</div>
           )}
 
           {step === 5 && (
