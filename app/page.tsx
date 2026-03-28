@@ -69,7 +69,7 @@ export default function DiscountApp() {
   };
 
   // 3. いいね機能（Firebaseのデータを更新）
-  const toggleLike = async (postId, currentLikes) => {
+    const toggleLike = async (postId: any, currentLikes: any) => {
     const postRef = doc(db, 'posts', postId);
     const isLiked = likedPostIds.includes(postId);
 
