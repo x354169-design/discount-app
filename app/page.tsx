@@ -18,13 +18,12 @@ const discounts = ['10% OFF', '20% OFF', '30% OFF', '半額！！！'];
 export default function DiscountApp() {
   const [activeTab, setActiveTab] = useState('feed')
   const [posts, setPosts] = useState<any[]>([]);
-  const [likedPostIds, setLikedPostIds] = useState([]);
-
+  const [likedPostIds, setLikedPostIds] = useState<any[]>([]);
   const [step, setStep] = useState(1);
-  const [selectedStation, setSelectedStation] = useState('');
-  const [selectedStore, setSelectedStore] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedDiscount, setSelectedDiscount] = useState('');
+  const [selectedStation, setSelectedStation] = useState<any>(null);
+  const [selectedStore, setSelectedStore] = useState<any>(null);
+  const [selectedCategory, setSelectedCategory] = useState<any>(null);
+  const [selectedDiscount, setSelectedDiscount] = useState<any>(null);
   const [selectedCoords, setSelectedCoords] = useState<any>(null);
 
   // 1. Firebaseからリアルタイムで投稿を取得する
